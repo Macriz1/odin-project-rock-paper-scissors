@@ -90,14 +90,19 @@ let computerScore = 0;
 
 
  playGame();
+ console.log(playRound(playerInput, computerValue));
  console.log(`computer score is : ${computerScore} why user score is :  ${playerScore}`);
  playGame();
+ console.log(playRound(playerInput, computerValue));
  console.log(`computer score is : ${computerScore} why user score is :  ${playerScore}`);
  playGame();
+ console.log(playRound(playerInput, computerValue));
  console.log(`computer score is : ${computerScore} why user score is :  ${playerScore}`);
  playGame();
+ console.log(playRound(playerInput, computerValue));
  console.log(`computer score is : ${computerScore} why user score is :  ${playerScore}`);
  playGame();
+ console.log(playRound(playerInput, computerValue));
  console.log(`computer score is : ${computerScore} why user score is :  ${playerScore}`);
 
  function finalResult(){
