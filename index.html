@@ -4,8 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-paper-scissors</title>
+    <link rel="stylesheet" href="rps.css">
 </head>
 <body>
+
+    <h1 class="game-logo">
+        Pro Rock-Paper-Scissors Game
+    </h1>
+
+    <div class="game-container">
+        <div class="player-choice">
+            <p class="main">Player 1</p>
+            <button id="Rock"  class="button-choice" >Rock</button>
+            <button id="Paper" class="button-choice" >Paper</button>
+            <button id="Scissors" class="button-choice" >Scissors</button>
+        </div>
+        <div class="score">
+            <p class="main">Round</p>
+            <p class="display-round">
+                1
+            </p>
+            <p class="main">Player Score</p>
+            <p class="display-player-score">
+                0
+            </p>
+            <div class="main">Computer Score</div>
+            <p class="display-computer-score">
+                0
+            </p>
+        </div>
+        <div class="computer-choice">
+            <p class="main">Computer</p>
+            <div class="computer-selection">
+                <div class="computer-select">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="score-container">
+
+    </div>
+
+
+
     <script src="game.js"></script>
 </body>
 </html>
