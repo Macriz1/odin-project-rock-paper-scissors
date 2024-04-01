@@ -1,129 +1,101 @@
-// let userInput = prompt('playing a game of rock, paper and scissors, please choose rock, paper or scissors', 'rock').toLocaleLowerCase();
-
-// created a variable that generate 3 random numbers from 0 - 1
-// compared the variable to each instance , 0 = "rock", 1 = "paper", 2 = "scissors"
-
-function getComputerChoice(){
-    const randNumber = (Math.floor(Math.random() * 3));
-
-    if (randNumber === 0){
-        return "rock";
-    }else if(randNumber === 1){
-        return "paper";
-    }else{
-        return "scissors";
-    }
-    
-    
-}
-
- function playRound(playerSelection, computerSelection){
-
-    if(playerSelection == "rock" && computerSelection == "rock"){
-        return "rock tie with rock, this is a draw";
-        
-    }else if(playerSelection == "paper" && computerSelection == "rock"){
-        return "you win paper covers rock";
-    
-    }else if(playerSelection == "scissors" && computerSelection == "rock"){
-        return "you lose rock breaks scissors";
-        
-    }else if(playerSelection == "paper" && computerSelection == "paper"){
-         return "paper tie paper, this is a tie";
-         
-    }else if(playerSelection == "rock" && computerSelection == "paper"){
-        return "you lose paper covers rock";
-        
-    }else if(playerSelection == "scissors" && computerSelection == "paper"){
-        return "you win scissors cuts paper";
-    
-    }else if(playerSelection == "rock" && computerSelection == "scissors"){
-         return "you win rock breaks scissors";
-
-    }else if(playerSelection == "paper" && computerSelection == "scissors"){
-        return "you lose scissors cuts paper";
-        
-    }else if(playerSelection == "scissors" && computerSelection == "scissors"){
-        return "scissors tie with scissors, this is a draw";
-
-    }else{
-        return "incorrect input check spelling";
-    }
- }
-
-//  const playerSelection = userInput;
-//  const computerSelection = getComputerChoice();
+let playerChoices= document.querySelectorAll('.button-choice');
+// let testing = document.queryelector('#Rock');
+let displayComputerChoice = document.querySelector('.computer-select')
+let displayOutcome = document.querySelector('.score-container');
+let rounds = document.querySelector('.display-round');
+let playerScores = document.querySelector('.display-player-score');
+let computerScores = document.querySelector('.display-computer-score');
 
 
-// console.log(playRound(playerSelection, computerSelection));
- 
+const computerChoices = ['Rock', 'Paper', 'Scissors'];
+
+
+
+let gameRound = 1;
 let playerScore = 0;
 let computerScore = 0;
 
- function playGame(){
 
 
-    playerInput = prompt('rock, paper or scissors', "rock").toLocaleLowerCase();
-    computerValue = getComputerChoice();
-    checkOutcome = playRound(playerInput, computerValue);
- 
-   
-   if(checkOutcome.startsWith("you win")){
-        playerScore = playerScore + 1;
-        return playerScore;
-           
-   }else if(checkOutcome.startsWith("you lose")){
-        computerScore = computerScore + 1;
-        return computerScore;
-   }else{
-        return "this is a tie";
-   }
+playerChoices.forEach((choice) =>{
+    
+    choice.addEventListener('click', ()=>{
+        let playerChoice = choice.id;
+        let computerChoice = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+        let result = document.createElement('p')
+        let display = '';
+       
 
-   
+        if(playerChoice === computerChoice){
+            display = computerChoice;
+            gameRound += 1;
+            result.textContent = `This is a tie, computer choose : ${display} why  player choose : ${choice.id}`;
 
-   
+        }else if (
+            (playerChoice == 'Rock' && computerChoice == 'Scissors') || (playerChoice == 'Paper' && computerChoice == 'Rock') || (playerChoice= 'Scissors' && computerChoice == 'Paper')
+        ){
+             display = computerChoice;
+            gameRound += 1;
+            playerScore += 1;
+            result.textContent = `you win, computer choose : ${display} why  player choose : ${choice.id}`;
 
- 
+        }else{
+            display = computerChoice;
+            gameRound += 1;
+            computerScore += 1;
+            result.textContent = `you lose, computer choose : ${display} why  player choose : ${choice.id}`;
 
- }
+        }
+
+        if(gameRound == 6){
+            if(playerScore > computerScore){
+                result.textContent = `player wins with ${playerScore} point`;
+            }else{
+                result.textContent = `computer wins with ${computerScore}`
+            }
+
+            playerScore = 0;
+            gameRound = 0;
+            computerScore = 0;
+        }
+
+
+    
+
+
+        displayComputerChoice.textContent = display;
+        displayOutcome.appendChild(result);
+        computerScores.textContent = computerScore;
+        playerScores.textContent = playerScore;
+        rounds.textContent = gameRound;
+
+      
+    })
+
+})
 
 
 
- playGame();
- console.log(playRound(playerInput, computerValue));
- console.log(`computer score is : ${computerScore} why user score is :  ${playerScore}`);
- playGame();
- console.log(playRound(playerInput, computerValue));
- console.log(`computer score is : ${computerScore} why user score is :  ${playerScore}`);
- playGame();
- console.log(playRound(playerInput, computerValue));
- console.log(`computer score is : ${computerScore} why user score is :  ${playerScore}`);
- playGame();
- console.log(playRound(playerInput, computerValue));
- console.log(`computer score is : ${computerScore} why user score is :  ${playerScore}`);
- playGame();
- console.log(playRound(playerInput, computerValue));
- console.log(`computer score is : ${computerScore} why user score is :  ${playerScore}`);
 
- function finalResult(){
-    if(computerScore < playerScore){
-        return "user wins"
-    }else if(computerScore > playerScore){
-        return "computer wins"
-    }else{
-        return "the game ends in a tie"
-    }
- }
 
- console.log(finalResult());
 
- 
 
- 
 
-// console.log(playGame());
-// console.log(playGame());
-// console.log(playGame());
-// console.log(playGame());
-// console.log(playGame());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
